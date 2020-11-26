@@ -2,7 +2,7 @@
     <div id="product-list-one">
         <h1>List one</h1>
         <ul>
-            <li v-for="product in saleProducts">
+            <li v-for="product in saleProduct">
                 <span class="name">{{product.name}}</span>
                 <span class="price">{{product.price}}</span>
             </li>
@@ -20,14 +20,14 @@
          products(){
              return this.$store.state.products
          },
-         saleProducts(){
-             return this.$store.getters.saleProduct
-         }
+         ...mapGetters([
+            'saleProduct'
+         ])
      },
      methods:{
-         reducePrice : function(amount){
-             this.$store.dispatch('reducePrice', amount)
-         }
+         ...mapActions([
+            'reducePrice'
+         ])
      }
  }
  </script>
