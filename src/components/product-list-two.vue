@@ -1,7 +1,7 @@
  <template>
     <div id="product-list-two">
         <ul>
-            <li v-for="product in products">
+            <li v-for="product in saleProducts">
                 <span class="name">{{product.name}}</span>
                 <span class="price">{{product.price}}</span>
             </li>
@@ -11,8 +11,14 @@
 
  <script>
  export default {
-     props :['products'],
-     
+        computed :{
+            products(){
+                return this.$store.state.products
+            },
+            saleProducts(){
+             return this.$store.getters.saleProduct
+         }
+        }     
  }
  </script>
  <style scoped>
